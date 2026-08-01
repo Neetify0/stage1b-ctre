@@ -8,6 +8,9 @@ package first.robot;
 import org.wpilib.command3.Scheduler;
 import org.wpilib.framework.OpModeRobot;
 
+import first.robot.mechanisms.Feeder;
+import first.robot.mechanisms.IntakeLauncher;
+
 /**
  * The methods in this class are called automatically as described in the OpModeRobot documentation.
  * OpMode classes anywhere in the package (or sub-packages) where this class is located are
@@ -22,6 +25,12 @@ public class Robot extends OpModeRobot {
    * initialization code.
    */
   public Robot() {}
+  public IntakeLauncher intakeLauncher = new IntakeLauncher();
+  public Feeder feeder = new Feeder();
+  public void robotPeriodic() {
+    intakeLauncher.periodic();
+    feeder.periodic();
+  }
 
   @Override
   public void simulationPeriodic() {
