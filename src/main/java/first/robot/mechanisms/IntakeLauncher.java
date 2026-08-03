@@ -11,6 +11,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import first.robot.simulation.SingleFlywheelSim;
 
 public class IntakeLauncher extends Mechanism {
+    public IntakeLauncher() {setDefaultCommand(idle());}
     private TalonFX motor = new TalonFX(4, CANBus.systemcore(0));
     private final SingleFlywheelSim sim = new SingleFlywheelSim(motor, "IntakeLauncher");
 
@@ -51,7 +52,6 @@ public class IntakeLauncher extends Mechanism {
 
     public Command idle() {
         return run(coroutine -> {
-            setDefaultCommand(idle());
             while (true) {
                 motor.setThrottle(0);
                 coroutine.yield();
