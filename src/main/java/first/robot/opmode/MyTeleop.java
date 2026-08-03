@@ -6,7 +6,6 @@
 package first.robot.opmode;
 
 import first.robot.Robot;
-import first.robot.mechanisms.Drivetrain;
 
 import org.wpilib.command3.button.CommandNiDsXboxController;
 import org.wpilib.opmode.PeriodicOpMode;
