@@ -5,12 +5,11 @@
  */
 package first.robot;
 
-import org.wpilib.command3.Scheduler;
-import org.wpilib.framework.OpModeRobot;
-
 import first.robot.mechanisms.Drivetrain;
 import first.robot.mechanisms.Feeder;
 import first.robot.mechanisms.IntakeLauncher;
+import org.wpilib.command3.Scheduler;
+import org.wpilib.framework.OpModeRobot;
 
 /**
  * The methods in this class are called automatically as described in the OpModeRobot documentation.
@@ -26,9 +25,11 @@ public class Robot extends OpModeRobot {
    * initialization code.
    */
   public Robot() {}
+
   public IntakeLauncher intakeLauncher = new IntakeLauncher();
   public Feeder feeder = new Feeder();
   public Drivetrain drivetrain = new Drivetrain();
+
   public void robotPeriodic() {
     intakeLauncher.periodic();
     feeder.periodic();

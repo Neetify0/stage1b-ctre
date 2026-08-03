@@ -1,21 +1,21 @@
 package first.robot.opmode;
 
-import first.robot.Robot;
-
 import static org.wpilib.units.Units.Seconds;
 
+import first.robot.Robot;
 import org.wpilib.command3.Scheduler;
 import org.wpilib.opmode.PeriodicOpMode;
 
 public class DriveStraightAutoMode extends PeriodicOpMode {
-    private final Robot robot;
+  private final Robot robot;
 
-    public DriveStraightAutoMode(Robot robot) {
-        this.robot = robot;
-    }
+  public DriveStraightAutoMode(Robot robot) {
+    this.robot = robot;
+  }
 
-    @Override
-    public void start() {
-        Scheduler.getDefault().schedule(robot.drivetrain.arcadeDrive( () -> 0.5, () -> 0 ).withTimeout(Seconds.of(4)));
-    }
+  @Override
+  public void start() {
+    Scheduler.getDefault()
+        .schedule(robot.drivetrain.arcadeDrive(() -> 0.5, () -> 0).withTimeout(Seconds.of(4)));
+  }
 }
