@@ -13,7 +13,7 @@ import org.wpilib.opmode.Teleop;
 @Teleop
 public class MyTeleop extends PeriodicOpMode {
   private final Robot robot;
-  private CommandNiDsXboxController xbox;
+  private CommandNiDsXboxController xbox = new CommandNiDsXboxController(0);
 
   /** The Robot instance is passed into the opmode via the constructor. */
   public MyTeleop(Robot robot) {
@@ -24,7 +24,7 @@ public class MyTeleop extends PeriodicOpMode {
     xbox.a().whileTrue(robot.intakeLauncher.outtake()).whileTrue(robot.feeder.outtake());
 
     robot.drivetrain.setDefaultCommand(
-        robot.drivetrain.arcadeDrive(() -> -xbox.getLeftX(), () -> xbox.getRightX()));
+        robot.drivetrain.arcadeDrive(() -> -xbox.getLeftY(), () -> xbox.getRightX()));
   }
 
   @Override
