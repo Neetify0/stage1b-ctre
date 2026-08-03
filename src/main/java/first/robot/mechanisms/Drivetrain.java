@@ -72,4 +72,16 @@ public class Drivetrain extends Mechanism {
         })
         .named("Set speed and rotation");
     }
+
+    public Command rotateInPlace(double angleDegrees, DoubleSupplier rotationThrottle) {
+        return run(coroutine -> {
+            double targetAngle = imu.getRotation2d().getDegrees() + angleDegrees;
+            while (true) {
+                while (imu.getRotation2d().getDegrees() < targetAngle) {
+                    differentialDrive.arcadeDrive(0.0, rotationThrottle.getAsDouble());
+                }
+            }
+        })
+        .named("Rotate at throttle until reaching target angle");
+    }
 }
