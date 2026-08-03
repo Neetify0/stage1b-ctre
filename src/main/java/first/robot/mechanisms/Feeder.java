@@ -11,7 +11,7 @@ import first.robot.simulation.SingleFlywheelSim;
 
 
 public class Feeder extends Mechanism {
-    public Feeder() {setDefaultCommand(idle());}
+    
     private TalonFX motor = new TalonFX(5, CANBus.systemcore(0));
     private final SingleFlywheelSim sim = new SingleFlywheelSim(motor, "Feeder");
 
@@ -19,6 +19,8 @@ public class Feeder extends Mechanism {
         sim.periodic();
     }
 
+    public Feeder() {setDefaultCommand(idle());}
+    
     public Command feed() {
         return run(coroutine -> {
             while (true) {

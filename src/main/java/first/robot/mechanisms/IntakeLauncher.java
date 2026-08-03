@@ -11,13 +11,14 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import first.robot.simulation.SingleFlywheelSim;
 
 public class IntakeLauncher extends Mechanism {
-    public IntakeLauncher() {setDefaultCommand(idle());}
     private TalonFX motor = new TalonFX(4, CANBus.systemcore(0));
     private final SingleFlywheelSim sim = new SingleFlywheelSim(motor, "IntakeLauncher");
 
     public void periodic() {
         sim.periodic();
     }
+
+    public IntakeLauncher() {setDefaultCommand(idle());}
 
     public Command shoot() {
         return run(coroutine -> {
