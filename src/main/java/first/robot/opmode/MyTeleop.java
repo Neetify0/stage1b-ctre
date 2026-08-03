@@ -6,6 +6,7 @@
 package first.robot.opmode;
 
 import first.robot.Robot;
+import first.robot.mechanisms.Drivetrain;
 
 import org.wpilib.command3.button.CommandNiDsXboxController;
 import org.wpilib.opmode.PeriodicOpMode;
@@ -23,6 +24,8 @@ public class MyTeleop extends PeriodicOpMode {
     xbox.leftBumper().whileTrue(robot.intakeLauncher.intake()).whileTrue(robot.feeder.intake());
     xbox.rightBumper().whileTrue(robot.intakeLauncher.shoot()).whileTrue(robot.feeder.feed());
     xbox.a().whileTrue(robot.intakeLauncher.outtake()).whileTrue(robot.feeder.outtake());
+
+    robot.drivetrain.setDefaultCommand(robot.drivetrain.arcadeDrive( () -> -xbox.getLeftX(), () -> xbox.getRightX() ));
   }
 
   @Override
